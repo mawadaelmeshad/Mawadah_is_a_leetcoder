@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
+        stack<int> mystack;
+        int counter=0;
+        for(int x : pushed){
+            mystack.push(x);
+            while(!mystack.empty() && mystack.top()==popped[counter]){
+                counter++;
+                mystack.pop();
+            }
+        }
+        return counter==popped.size();
+    }
+};
